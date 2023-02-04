@@ -1,22 +1,19 @@
-name: Deploy app and database images to AWS ECR k
+name: Deploy app and database images to AWS ECR
 on:
   workflow_dispatch:
     branches:
       - prod
-      - dev
     paths:
       - application/*
   push:
     branches:
       - prod
-      - dev
     paths:
       - application/*
 
   pull_request:
     branches:
       - prod
-      - dev
     paths:
       - application/*
 
@@ -33,7 +30,7 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-    environment: dev
+    environment: prod
     defaults:
       run:
         working-directory: ./application
