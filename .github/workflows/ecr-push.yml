@@ -1,4 +1,4 @@
-name: Deploy app and database images to AWS ECR k
+name: Deploy app and database images to AWS ECR
 on:
   workflow_dispatch:
     branches:
