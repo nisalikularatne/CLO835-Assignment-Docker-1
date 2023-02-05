@@ -1,4 +1,4 @@
-name: "Terraform Deployment - prod"
+name: "Terraform Deployment - prod "
 
 on:
   push:
@@ -122,6 +122,7 @@ jobs:
         shell: bash
 
   deploy:
+    needs: terraformNet
     name: Deploy
     runs-on: ubuntu-latest
     environment: prod
