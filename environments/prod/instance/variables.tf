@@ -33,7 +33,7 @@ variable "instance_type" {
 }
 
 variable "linux_key_ec2" {
-  default     = "dev-project"
+  default     = "prod-project"
   description = "Path to the public key to use in Linux VMs provisioning"
   type        = string
 }
