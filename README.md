@@ -40,4 +40,20 @@ In the AWS portal under the S3 service create 1 bucket with the naming as shown 
 
 prod-clo835-docker-assignment1
 
+## Deployment and Destruction of Infrastructure
+We have created the following modules
+1. networking
+2. securityGroup
+3. instance
+4. ecr
+5. alb
 
+In order to make the deployment faster we have integrated terragrunt.hcl files
+which will rapidly deploy the infrastructure in the environment s using the commands below.
+Run this command in the root of the project in CLI. This applies to all resources in prod environment
+```terraform
+ terragrunt run-all init
+ terragrunt run-all apply
+```
+
+Additionally the terraform deployment can be triggered by our workflow
