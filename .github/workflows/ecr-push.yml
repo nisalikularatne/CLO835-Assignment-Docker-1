@@ -1,19 +1,18 @@
 name: Deploy app and database images to AWS ECR repo
 on:
-needs: ["Terraform Deployment - prod"]
-workflow_dispatch:
+  workflow_dispatch:
 
     branches:
       - prod
     paths:
       - application/*
-push:
+  push:
     branches:
       - prod
     paths:
       - application/*
 
-pull_request:
+  pull_request:
     branches:
       - prod
     paths:
