@@ -28,9 +28,9 @@ supported hooks are:
 ### Step - 1 (Github Repository Clone)
 Clone the repository to your local environment of Cloud9 
 
-```git clone git@github.com:nisalikularatne/ACS_Group_15_FinalProject.git```
+```git clone git@github.com:nisalikularatne/CLO835-Assignment-Docker-1.git```
 
-### Step - 2 (Create 3 keys for each environment)
+### Step - 2 (Create key to login to instance)
 In your AWS console in EC2 service under key pairs create one individual key for prod since for this project we are dealing with prod env to show the working of docker
 ```
 dev environment - prod-project
