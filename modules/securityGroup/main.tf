@@ -3,7 +3,7 @@ data "terraform_remote_state" "network" { // This is to use Outputs from Remote 
   backend = "s3"
   config = {
     bucket = var.bucket_name                    // Bucket from where to GET Terraform State
-    key    = "infrastructure/terraform.tfstate" // Object name in the bucket to GET Terraform State
+    key    = "dev-networking/terraform.tfstate" // Object name in the bucket to GET Terraform State
     region = "us-east-1"                        // Region where bucket created
   }
 }
