@@ -13,6 +13,7 @@ DBPWD = os.environ.get("DBPWD") or "passwors"
 DATABASE = os.environ.get("DATABASE") or "employees"
 COLOR_FROM_ENV = os.environ.get('APP_COLOR') or "lime"
 DBPORT = int(os.environ.get("DBPORT"))
+ROUTE = os.environ.get("route") or "/blue"
 
 # Create a connection to the MySQL database
 db_conn = connections.Connection(
@@ -45,7 +46,7 @@ SUPPORTED_COLORS = ",".join(color_codes.keys())
 COLOR = random.choice(["red", "green", "blue", "blue2", "darkblue", "pink", "lime"])
 
 
-@app.route("/", methods=['GET', 'POST'])
+@app.route(ROUTE, methods=['GET', 'POST'])
 def home():
     return render_template('addemp.html', color=color_codes[COLOR])
 
