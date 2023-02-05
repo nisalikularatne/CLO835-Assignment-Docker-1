@@ -17,7 +17,6 @@ on:
       - prod
     paths:
       - application/*
-needs: ["Terraform Deployment - prod"]
 
 env:
   APPLICATION_ECR_PREFIX:  docker-dev-containers-application
