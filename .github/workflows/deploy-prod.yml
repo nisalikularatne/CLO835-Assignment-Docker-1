@@ -1,4 +1,4 @@
-name: "Terraform Deployment - prod"
+name: "Terraform Deployment - prod "
 
 on:
   push:
