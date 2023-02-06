@@ -1,10 +1,5 @@
 name: Deploy app and database images to AWS ECR repo
 on:
-  workflow_dispatch:
-    branches:
-      - prod
-    paths:
-      - application/*
   push:
     branches:
       - prod
