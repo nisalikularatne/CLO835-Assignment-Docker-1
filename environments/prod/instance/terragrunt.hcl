@@ -1,3 +1,3 @@
 dependencies {
-  paths = ["../securityGroup","../networking"]
+  paths = ["../securityGroup","../networking","../ecr"]
 }
