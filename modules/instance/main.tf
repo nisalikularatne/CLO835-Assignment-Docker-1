@@ -64,10 +64,10 @@ first_container=my_db
 sudo docker run -d --name blue --net mynetwork -p 8081:8080  -e APP_COLOR=$APP_COLOR -e DBHOST=$DBHOST -e DBPORT=$DBPORT -e  DBUSER=$DBUSER -e DBPWD=$DBPWD -e ROUTE="/blue" ${data.aws_caller_identity.current.account_id}.dkr.ecr.${data.aws_region.current.name}.amazonaws.com/${local.prefix}-application-repo:latest
 export APP_COLOR=pink
 sleep 30
-sudo docker run --net mynetwork -d --name pink -p 8082:8080  -e APP_COLOR=$APP_COLOR -e DBHOST=$DBHOST -e DBPORT=$DBPORT -e  DBUSER=$DBUSER -e DBPWD=$DBPWD -e ROUTE="/green" ${data.aws_caller_identity.current.account_id}.dkr.ecr.${data.aws_region.current.name}.amazonaws.com/${local.prefix}-application-repo:latest
+sudo docker run --net mynetwork -d --name pink -p 8082:8080  -e APP_COLOR=$APP_COLOR -e DBHOST=$DBHOST -e DBPORT=$DBPORT -e  DBUSER=$DBUSER -e DBPWD=$DBPWD -e ROUTE="/pink" ${data.aws_caller_identity.current.account_id}.dkr.ecr.${data.aws_region.current.name}.amazonaws.com/${local.prefix}-application-repo:latest
 sleep 30
 export APP_COLOR=lime
-sudo docker run -d --name lime --net mynetwork -p 8083:8080  -e APP_COLOR=$APP_COLOR -e DBHOST=$DBHOST -e DBPORT=$DBPORT -e  DBUSER=$DBUSER -e DBPWD=$DBPWD -e ROUTE="/pink" ${data.aws_caller_identity.current.account_id}.dkr.ecr.${data.aws_region.current.name}.amazonaws.com/${local.prefix}-application-repo:latest
+sudo docker run -d --name lime --net mynetwork -p 8083:8080  -e APP_COLOR=$APP_COLOR -e DBHOST=$DBHOST -e DBPORT=$DBPORT -e  DBUSER=$DBUSER -e DBPWD=$DBPWD -e ROUTE="/lime" ${data.aws_caller_identity.current.account_id}.dkr.ecr.${data.aws_region.current.name}.amazonaws.com/${local.prefix}-application-repo:latest
 
 EOF
 
