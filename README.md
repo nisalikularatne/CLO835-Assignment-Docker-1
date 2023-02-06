@@ -33,7 +33,7 @@ Clone the repository to your local environment of Cloud9
 ### Step - 2 (Create key to login to instance)
 In your AWS console in EC2 service under key pairs create one individual key for prod since for this project we are dealing with prod env to show the working of docker
 ```
-dev environment - prod-project
+prod environment - prod-project
 ```
 ### Step - 3 (S3 Settings)
 In the AWS portal under the S3 service create 1 bucket with the naming as shown below:

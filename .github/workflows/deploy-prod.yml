@@ -11,8 +11,8 @@ permissions:
   contents: read
   pull-requests: write
 env:
-  APPLICATION_ECR_PREFIX:  docker-dev-containers-application
-  DATABASE_ECR_PREFIX: docker-dev-containers-database
+  APPLICATION_ECR_PREFIX:  docker-prod-containers-application
+  DATABASE_ECR_PREFIX: docker-prod-containers-database
   ECR_REPOSITORY:  repo
   DATABASE: mysql
   APPLICATION: application

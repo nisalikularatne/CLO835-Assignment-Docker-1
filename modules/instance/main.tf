@@ -9,17 +9,17 @@ provider "aws" {
 data "terraform_remote_state" "networking" { // This is to use Outputs from Remote State
   backend = "s3"
   config = {
-    bucket = var.bucket_name                    // Bucket from where to GET Terraform State
-    key    = "dev-networking/terraform.tfstate" // Object name in the bucket to GET Terraform State
-    region = "us-east-1"                        // Region where bucket created
+    bucket = var.bucket_name                     // Bucket from where to GET Terraform State
+    key    = "prod-networking/terraform.tfstate" // Object name in the bucket to GET Terraform State
+    region = "us-east-1"                         // Region where bucket created
   }
 }
 data "terraform_remote_state" "sg" { // This is to use Outputs from Remote State
   backend = "s3"
   config = {
-    bucket = var.bucket_name                        // Bucket from where to GET Terraform State
-    key    = "dev-security-group/terraform.tfstate" // Object name in the bucket to GET Terraform State
-    region = "us-east-1"                            // Region where bucket created
+    bucket = var.bucket_name                         // Bucket from where to GET Terraform State
+    key    = "prod-security-group/terraform.tfstate" // Object name in the bucket to GET Terraform State
+    region = "us-east-1"                             // Region where bucket created
   }
 }
 
@@ -30,7 +30,7 @@ locals {
     { "Env" = var.env }
   )
   name_prefix = "${var.prefix}-${var.env}"
-  prefix      = "docker-dev-containers"
+  prefix      = "docker-prod-containers"
   region      = data.aws_region.current.name
 }
 
@@ -61,13 +61,13 @@ export DBPWD=pw
 export APP_COLOR=blue
 first_container=my_db
 # Check the status of the first container
-sudo docker run -d --name blue --net mynetwork -p 8080:8080  -e APP_COLOR=$APP_COLOR -e DBHOST=$DBHOST -e DBPORT=$DBPORT -e  DBUSER=$DBUSER -e DBPWD=$DBPWD -e ROUTE="/blue" ${data.aws_caller_identity.current.account_id}.dkr.ecr.${data.aws_region.current.name}.amazonaws.com/${local.prefix}-application-repo:latest
-export APP_COLOR=green
-sleep 30
-sudo docker run --net mynetwork -d --name green -p 8081:8080  -e APP_COLOR=$APP_COLOR -e DBHOST=$DBHOST -e DBPORT=$DBPORT -e  DBUSER=$DBUSER -e DBPWD=$DBPWD -e ROUTE="/green" ${data.aws_caller_identity.current.account_id}.dkr.ecr.${data.aws_region.current.name}.amazonaws.com/${local.prefix}-application-repo:latest
-sleep 30
+sudo docker run -d --name blue --net mynetwork -p 8081:8080  -e APP_COLOR=$APP_COLOR -e DBHOST=$DBHOST -e DBPORT=$DBPORT -e  DBUSER=$DBUSER -e DBPWD=$DBPWD -e ROUTE="/blue" ${data.aws_caller_identity.current.account_id}.dkr.ecr.${data.aws_region.current.name}.amazonaws.com/${local.prefix}-application-repo:latest
 export APP_COLOR=pink
-sudo docker run -d --name pink --net mynetwork -p 8082:8080  -e APP_COLOR=$APP_COLOR -e DBHOST=$DBHOST -e DBPORT=$DBPORT -e  DBUSER=$DBUSER -e DBPWD=$DBPWD -e ROUTE="/pink" ${data.aws_caller_identity.current.account_id}.dkr.ecr.${data.aws_region.current.name}.amazonaws.com/${local.prefix}-application-repo:latest
+sleep 30
+sudo docker run --net mynetwork -d --name pink -p 8082:8080  -e APP_COLOR=$APP_COLOR -e DBHOST=$DBHOST -e DBPORT=$DBPORT -e  DBUSER=$DBUSER -e DBPWD=$DBPWD -e ROUTE="/green" ${data.aws_caller_identity.current.account_id}.dkr.ecr.${data.aws_region.current.name}.amazonaws.com/${local.prefix}-application-repo:latest
+sleep 30
+export APP_COLOR=lime
+sudo docker run -d --name lime --net mynetwork -p 8083:8080  -e APP_COLOR=$APP_COLOR -e DBHOST=$DBHOST -e DBPORT=$DBPORT -e  DBUSER=$DBUSER -e DBPWD=$DBPWD -e ROUTE="/pink" ${data.aws_caller_identity.current.account_id}.dkr.ecr.${data.aws_region.current.name}.amazonaws.com/${local.prefix}-application-repo:latest
 
 EOF
 

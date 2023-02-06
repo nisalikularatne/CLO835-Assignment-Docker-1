@@ -81,7 +81,7 @@ resource "aws_alb_target_group" "group2" {
   protocol = "HTTP"
 
   health_check {
-    path                = "/green"
+    path                = "/pink"
     interval            = 30
     timeout             = 5
     healthy_threshold   = 5
@@ -96,7 +96,7 @@ resource "aws_alb_target_group" "group3" {
   protocol = "HTTP"
   vpc_id   = data.terraform_remote_state.networking.outputs.vpc_id
   health_check {
-    path                = "/pink"
+    path                = "/lime"
     interval            = 30
     timeout             = 5
     healthy_threshold   = 5
@@ -115,7 +115,7 @@ resource "aws_alb_listener_rule" "rule2" {
 
   condition {
     path_pattern {
-      values = ["/green"]
+      values = ["/pink"]
     }
   }
 }
@@ -129,23 +129,23 @@ resource "aws_alb_listener_rule" "rule3" {
 
   condition {
     path_pattern {
-      values = ["/pink"]
+      values = ["/lime"]
     }
   }
 }
 resource "aws_lb_target_group_attachment" "group1" {
   target_group_arn = aws_alb_target_group.group1.arn
   target_id        = data.terraform_remote_state.ec2.outputs.ec2_id
-  port             = 8080
+  port             = 8081
 }
 resource "aws_lb_target_group_attachment" "group2" {
   target_group_arn = aws_alb_target_group.group2.arn
   target_id        = data.terraform_remote_state.ec2.outputs.ec2_id
-  port             = 8081
+  port             = 8082
 }
 resource "aws_lb_target_group_attachment" "group3" {
   target_group_arn = aws_alb_target_group.group3.arn
   target_id        = data.terraform_remote_state.ec2.outputs.ec2_id
-  port             = 8082
+  port             = 8083
 }
 
