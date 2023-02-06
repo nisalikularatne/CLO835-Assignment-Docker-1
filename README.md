@@ -56,4 +56,3 @@ Run this command in the root of the project in CLI. This applies to all resource
  terragrunt run-all apply
 ```
 
-Additionally the terraform deployment can be triggered by our workflow
