@@ -1,3 +1,3 @@
 dependencies {
-  paths = ["../securityGroup","../networking","../instance"]
+  paths = ["../securityGroup","../networking"]
 }
