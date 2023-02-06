@@ -61,7 +61,7 @@ resource "aws_alb_listener" "this" {
 resource "aws_alb_target_group" "group1" {
   name     = "${var.env}-target-group-1"
   vpc_id   = data.terraform_remote_state.networking.outputs.vpc_id
-  port     = 8080
+  port     = 8081
   protocol = "HTTP"
 
   health_check {
@@ -77,7 +77,7 @@ resource "aws_alb_target_group" "group1" {
 resource "aws_alb_target_group" "group2" {
   name     = "${var.env}-target-group-2"
   vpc_id   = data.terraform_remote_state.networking.outputs.vpc_id
-  port     = 8081
+  port     = 8082
   protocol = "HTTP"
 
   health_check {
@@ -92,7 +92,7 @@ resource "aws_alb_target_group" "group2" {
 #
 resource "aws_alb_target_group" "group3" {
   name     = "${var.env}-target-group-3"
-  port     = 8082
+  port     = 8083
   protocol = "HTTP"
   vpc_id   = data.terraform_remote_state.networking.outputs.vpc_id
   health_check {
