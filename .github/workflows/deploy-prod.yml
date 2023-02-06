@@ -167,9 +167,8 @@ jobs:
       matrix:
         workingDir:
           [
-            ./environments/prod/networking,
-            ./environments/prod/securityGroup,
-            ./environments/prod/ecr
+            ./environments/prod/instance,
+            ./environments/prod/alb
           ]
     environment: prod
     env:
