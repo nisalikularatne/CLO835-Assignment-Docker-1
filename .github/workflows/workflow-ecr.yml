@@ -1,4 +1,4 @@
-name: Deploy app and database images to AWS ECR repo
+name: Deploy app and database images to AWS ECR
 on:
   push:
     branches:
