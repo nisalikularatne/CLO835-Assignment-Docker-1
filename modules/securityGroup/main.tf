@@ -2,9 +2,9 @@
 data "terraform_remote_state" "network" { // This is to use Outputs from Remote State
   backend = "s3"
   config = {
-    bucket = var.bucket_name                    // Bucket from where to GET Terraform State
-    key    = "dev-networking/terraform.tfstate" // Object name in the bucket to GET Terraform State
-    region = "us-east-1"                        // Region where bucket created
+    bucket = var.bucket_name                     // Bucket from where to GET Terraform State
+    key    = "prod-networking/terraform.tfstate" // Object name in the bucket to GET Terraform State
+    region = "us-east-1"                         // Region where bucket created
   }
 }
 
@@ -59,6 +59,14 @@ resource "aws_security_group" "ec2SG" {
     description      = "port 8082 custom TCP"
     from_port        = 8082
     to_port          = 8082
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+  ingress {
+    description      = "port 8082 custom TCP"
+    from_port        = 8083
+    to_port          = 8083
     protocol         = "tcp"
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]

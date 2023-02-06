@@ -15,13 +15,13 @@ variable "prefix" {
   description = "Name prefix"
 }
 variable "bucket_name" {
-  default     = "dev-clo835-docker-assignment1"
+  default     = "prod-clo835-docker-assignment1"
   description = "S3 bucket name"
   type        = string
 }
 
 variable "env" {
-  default     = "dev"
+  default     = "prod"
   type        = string
   description = "Deployment Environment"
 }
