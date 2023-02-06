@@ -1,4 +1,4 @@
-name: "Terraform Deployment - prod "
+name: "ECR push docker images "
 
 on:
   push:
